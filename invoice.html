@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Invoice from <!--configure-->CompanyName!</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="receipt">
+    <div class="header store-header">
+      <div class="header-inner">
+        <h1><!--configure-->CompanyName</h1>
+        <!--optional: hardcoded absolute file path to logo <img> file here-->
+        <p>Invoice</p>
+      </div>
+    </div>
+
+    <div class="header receipt-header">
+      <div class="header-inner">
+        <h3>Order Info</h3>
+        <p>Invoice #{{order_number}}</p>
+        <p><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
+        <h3>Bill To</h3>
+        <p>
+          {{billing_address.first_name}} {{billing_address.last_name}}
+          {{#if billing_address.address_2}}
+            <br>{{billing_address.address_2}}
+          {{/if}}
+          <br>{{billing_address.city}}, 
+          {{#if billing_address.other_location}}
+            {{billing_address.other_location_text}}, 
+          {{else}}
+            {{billing_address.state}}, 
+          {{/if}}
+          {{billing_address.country}}, {{billing_address.zipcode}}
+          {{#if billing_address.phone_number}}
+            <br>Phone: {{billing_address.phone_number}}
+          {{/if}}
+        </p>
+        <h3>Ship Status</h3>
+        <p class="shipping-type">
+          <span class="shipping-type-text">{{shipping_type}} Shipping</span>
+          <br>
+          <span> 
+            {{#if_standard shipping_type}}
+              You will receive an email when your order has shipped.
+            {{else}}
+              We will process your order as soon as possible. You will receive an email as soon as your order has shipped.
+            {{/if_standard}}
+          </span>
+        </p>
+        <h3>Ship To</h3>
+        <p>
+          {{shipping_address.first_name}} {{shipping_address.last_name}}
+          {{#if shipping_address.address_2}}
+            <br>{{shipping_address.address_2}}
+          {{/if}}
+          <br>
+          {{shipping_address.city}}, 
+          {{#if shipping_address.other_location}}
+            {{shipping_address.other_location_text}}, 
+          {{else}}
+            {{shipping_address.state}}, 
+          {{/if}}
+          {{shipping_address.country}}, {{shipping_address.zipcode}}
+          {{#if shipping_address.phone_number}}
+            <br>Phone: {{shipping_address.phone_number}}
+          {{/if}}
+        </p>
+      </div>
+    </div>
+
+    <div class="cart-items">
+      <table>
+        <tr class="cart-item cart-item-headers">
+          <th class="cart-item-title">Item</th>
+          <th class="quantity">Quantity</th>
+          <th class="price">Price</th>
+        </tr>
+        <tbody>
+          {{#each items}}
+            <tr class="cart-item cart-item-variation">
+              <td class="cart-item-title">{{this.product_title}} - 
+                {{#each product_variations}}
+                  {{this.product_variation_title}}
+                {{/each}}
+              </td>
+              <td class="quantity">{{this.quantity}}</td>
+              <td class="price">
+                {{#each product_variations}}
+                  {{format_currency this.price "usd" 2}}
+                {{/each}}
+              </td>
+            </tr>
+          {{/each}}
+          <tr class="cart-item cart-item-summary cart-item-subtotal">
+            <td class="cart-item-summary">Subtotal</td>
+            <td class="cart-item-spacer"></td>
+            <td class="price">{{format_currency subtotal "usd" 2}}</td>
+          </tr>
+          <tr class="cart-item cart-item-summary cart-item-shipping">
+            <td class="cart-item-summary">Shipping</td>
+            <td class="cart-item-spacer"></td>
+            <td class="price">{{format_currency shipping "usd" 2}}</td>
+          </tr>
+          <tr class="cart-item cart-item-summary cart-item-handling">
+            <td class="cart-item-summary">Handling</td>
+            <td class="cart-item-spacer"></td>
+            <td class="price">{{format_currency handling "usd" 2}}</td>
+          </tr>
+          <tr class="cart-item cart-item-summary cart-item-tax">
+            <td class="cart-item-summary">Tax</td>
+            <td class="cart-item-spacer"></td>
+            <td class="price">{{format_currency tax "usd" 2}}</td>
+          </tr>
+          <tr class="cart-item cart-item-summary cart-item-total invoice-total-due">
+            <td class="cart-item-summary">Total Due</td>
+            <td class="cart-item-spacer"></td>
+            <td class="price">{{format_currency total "usd" 2}} <span class="currency">{{currency}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="order-notes">
+      {{#if customer_notes}}
+        <h3>Customer Notes</h3>
+        <p>{{customer_notes}}</p>
+      {{/if}}
+    </div>
+
+    <div class="footer">
+      <h2>Thank you for shopping with <!--configure-->CompanyName!</h2>
+    </div>
+  </div>
+</body>
+</html>

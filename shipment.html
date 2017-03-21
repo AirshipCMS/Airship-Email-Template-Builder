@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Order from <!--configure-->CompanyName has Shipped!</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="receipt">
+    <div class="header store-header">
+      <div class="header-inner">
+        <h1><!--configure-->CompanyName</h1>
+        <!--optional: hardcoded absolute file path to logo <img> file here-->
+        <p>Shipment</p>
+      </div>
+    </div>
+
+    <div class="header receipt-header">
+      <div class="header-inner">
+        <h3>Order Info</h3>
+        <p>Receipt #{{order_number}}</p>
+        <p><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
+        {{#if customer_notes}}
+          <h3>Customer Notes</h3>
+          <p>{{customer_notes}}</p>
+        {{/if}}
+        <h3>Ship To</h3>
+        <p>
+          {{shipping_address.first_name}} {{shipping_address.last_name}}
+          {{#if shipping_address.address_2}}
+            <br>{{shipping_address.address_2}}
+          {{/if}}
+          <br>{{shipping_address.city}}, 
+          {{#if shipping_address.other_location}}
+            {{shipping_address.other_location_text}}, 
+          {{else}}
+            {{shipping_address.state}}, 
+          {{/if}}
+          {{shipping_address.country}}, {{shipping_address.zipcode}}
+          {{#if shipping_address.phone_number}}
+            <br>Phone: {{shipping_address.phone_number}}
+          {{/if}}
+        </p>
+        <h3>Shipment Status</h3>
+        <p class="shipped">Your Order was Shipped on 
+          <span><!--configure timezone-->{{format_date ship_date "%B %d, %Y"}}</span>! 
+          Please use the tracking number at the {{shipping_provider}} website to track your order.</p>
+        <h3>Shipping Type</h3>
+        <p class="shipping-provider"><span class="shipping-type-text">{{shipping_type}} Shipping</span>
+        {{#if shipping_provider}}
+          , <span>Carrier: {{shipping_provider}}</span>
+        {{/if}}
+        {{#if tracking_number}}
+          ,<span>Tracking Number: {{tracking_number}}</span>.
+        {{/if}}
+        </p>
+        {{#if shipment_notes}}
+          <p class="shipping-notes">{{shipment_notes}}</p>
+        {{/if}}
+      </div>
+    </div>
+    <div class="footer">
+      <h2>Thank you for shopping with <!--configure-->CompanyName.</h2>
+    </div>
+  </div>
+</body>
+</html>
