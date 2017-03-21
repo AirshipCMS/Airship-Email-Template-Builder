@@ -4,6 +4,8 @@ Run `yarn`.
 Edit styles in styles.css
 Run `gulp` to build html templates with inline styles.
 
+You don't need the <head> portion of generated markup for email templates. Copy the relevant contents of the html files in the `build` directory for airmail templates.
+
 ## Notes:
 
 This repo is in the process of being cleaned up for public release.
