@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Active Subscription</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="receipt">
+    <div class="header store-header">
+      <div class="header-inner">
+        <h1><!--configure-->CompanyName</h1>
+        <!--optional: hardcoded absolute file path to logo <img> file here-->
+        <p>Subscription Active</p>
+      </div>
+    </div>
+
+    <div class="header receipt-header">
+      <div class="header-inner">
+        <h3>Subscription</h3>
+        <p>Order: <b>#{{order_number}}</b></p>
+        <p>Order Date: <b>{{format_date order_date "%B %d, %Y"}}</b></p>
+        <p>Subscription Plan: <b>{{plan_name}}</b>
+          <br>Quantity: <b>&times;{{quantity}}</b>
+          <br>Price: <b><span style="color:red;">MISSING</span> every {{interval}}</b>
+        </p>
+
+        <h3>Bill To</h3>
+        <p>
+          {{#if billing_address.first_name}}
+            {{billing_address.first_name}} {{billing_address.last_name}}
+          {{else}}
+            No Billing information on file yet. Login at <a href="#" target="_blank">Portal Name</a> to add billing information before your trial ends on {{format_date trial_end "%B %d, %Y"}} in order to keep your subscription active.
+          {{/if}}
+          {{#if billing_address.address_1}}
+            <br>{{billing_address.address_1}}
+          
+            {{#if billing_address.address_2}}
+              <br>{{billing_address.address_2}}
+            {{/if}}
+
+            <br>{{billing_address.city}}, 
+
+            {{#if billing_address.other_location}}
+              {{billing_address.other_location_text}}, 
+            {{else}}
+              {{billing_address.state}}, 
+            {{/if}}
+
+            {{billing_address.country}}, {{billing_address.zipcode}}
+
+          {{/if}}
+          {{#if billing_address.phone_number}}
+            <br>Phone: {{billing_address.phone_number}}
+          {{/if}}
+          {{#if billing_address.first_name}}
+            <br><br>You will receive a separate email when your card is charged for this subscription.
+          {{/if}}
+        </p>
+        {{#if shipping_address.address_1}}
+          <h3>Ship To</h3>
+          <p>
+            {{shipping_address.first_name}} {{shipping_address.last_name}}
+            <br>{{shipping_address.address_1}}
+            {{#if shipping_address.address_2}}
+              <br>{{shipping_address.address_2}}
+            {{/if}}
+            <br>
+            {{shipping_address.city}}, 
+            {{#if shipping_address.other_location}}
+              {{shipping_address.other_location_text}}, 
+            {{else}}
+              {{shipping_address.state}}, 
+            {{/if}}
+            {{shipping_address.country}}, {{shipping_address.zipcode}}
+            {{#if shipping_address.phone_number}}
+              <br>Phone: {{shipping_address.phone_number}}
+            {{/if}}
+          </p>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="order-notes">
+      {{#if customer_notes}}
+        <h3>Customer Notes</h3>
+        <p>{{customer_notes}}</p>
+      {{/if}}
+    </div>
+
+    <div class="footer">
+      <h2>Thank you for shopping with <!--configure-->CompanyName!</h2>
+    </div>
+  </div>
+</body>
+</html>

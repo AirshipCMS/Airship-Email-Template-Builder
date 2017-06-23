@@ -75,6 +75,10 @@ table {
   display: block;
 }
 
+.receipt-header{
+  padding: 15px;
+}
+
 .header img{
   width: 257px;
   height: auto;
@@ -266,20 +270,6 @@ td.price{
   font-style: italic;
 }
 
-/* Shipped */
-
-p.shipped{
-  font-size: 15px;
-  line-height: 20px;
-  background-color: #E5F2A7;
-  /*background-color: #E6ECF7;*/
-  padding: 5px 10px;
-  color: #90a52d;
-  /*color: #979CAE;*/
-  font-style: italic;
-  margin-top: 10px;
-}
-
 /* Currency */
 
 span.currency{
@@ -289,3 +279,87 @@ span.currency{
 .placeholder{
   color: red !important;
 }
+
+p.shipped,
+p.large{
+  font-size: 17px;
+  line-height: 25px;
+  color: #90a52d;
+  margin-bottom: 10px;
+  background-color: #E5F2A7;
+  border-radius: 2px;
+  padding: 20px; 
+}
+
+p.large.failed{
+  color: #C91414;
+  background-color: #FFDBDB;
+}
+
+h1.header-failed{
+  color: #C91414;
+}
+
+/* ---------------Airship Styles--------------- */
+
+/*#67777B*/
+/*#8A9A9E*/
+
+p{
+  color: #67777B;
+}
+
+p b{
+  font-weight: 700;
+}
+
+p a{
+  color: #67777B;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+p a:hover{
+  color: #485659;
+}
+
+.airship-logo img{
+  max-width: 220px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.airship-logo p{
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  color: #8A9A9E;
+}
+
+h1{
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 36px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #67777B;
+  letter-spacing: 0;
+}
+
+h3{
+  color: #8A9A9E;
+}
+
+.footer{
+  color: #8A9A9E;
+}
+
+p.large{
+  color: #67777B;
+  background-color: #E4E9EB;
+}
+
+/* ---------------End Airship Styles--------------- */

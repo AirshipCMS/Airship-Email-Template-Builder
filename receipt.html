@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -24,6 +25,9 @@
         <h3>Bill To</h3>
         <p>
           {{billing_address.first_name}} {{billing_address.last_name}}
+          {{#if billing_address.address_1}}
+            <br>{{billing_address.address_1}}
+          {{/if}}
           {{#if billing_address.address_2}}
             <br>{{billing_address.address_2}}
           {{/if}}
@@ -53,6 +57,9 @@
         <h3>Ship To</h3>
         <p>
           {{shipping_address.first_name}} {{shipping_address.last_name}}
+          {{#if shipping_address.address_1}}
+            <br>{{shipping_address.address_1}}
+          {{/if}}
           {{#if shipping_address.address_2}}
             <br>{{shipping_address.address_2}}
           {{/if}}

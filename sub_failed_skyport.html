@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription Payment Failed</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="receipt">
+    <div class="header store-header">
+      <div class="header-inner">
+        <div class="airship-logo">
+          <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
+          <p>Airship CMS</p>
+        </div>
+        <h1 class="header-failed">Subscription Payment Failed</h1>
+      </div>
+    </div>
+
+    <div class="header receipt-header">
+      <div class="header-inner">
+        <p class="large failed">Subscription Payment of {{format_currency stripe_data.amount_due "usd" 2}} failed on {{format_date stripe_data.date}} from card ending *<span style="color:red;">MISSING</span>.</p>
+
+        <h3>Fix Your Payment Method</h3>
+        <p>Login to the <a href="https://skyport.airshipcms.io" target="_blank">Airship Developer Portal</a> to add a new payment method for your subscription.</p>
+        
+        <h3>Subscription</h3>
+        <p>Order: <b>#{{order_data.order_number}}</b></p>
+        <p>Order Date: <b>{{format_date order_data.created_at "%B %d, %Y"}}<b></p>
+        {{#each stripe_data.lines.data}}
+        <p>Subscription Plan: <b>{{plan.name}}</b>
+          <br>Quantity: <b>&times;{{quantity}}</b>
+          <br>Price: <b>{{format_currency plan.amount "usd" 2}} every {{plan.interval}}</b>
+        </p>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

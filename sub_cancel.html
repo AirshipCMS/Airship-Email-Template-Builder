@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription Canceled</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="receipt">
+    <div class="header store-header">
+      <div class="header-inner">
+        <h1><!--configure-->CompanyName</h1>
+        <!--optional: hardcoded absolute file path to logo <img> file here-->
+        <p>Subscription Canceled</p>
+      </div>
+    </div>
+
+    <div class="header receipt-header">
+      <div class="header-inner">
+        <p class="large">Your Subscription was canceled on {{format_date stripe_data.canceled_at "%B %d, %Y"}}.
+        {{#if stripe_data.cancel_at_period_end}}
+          You will be able to access the content associated with this subscription up until {{format_date stripe_data.current_period_end "%B %d, %Y"}}.
+        {{else}}
+        {{/if}}
+        </p>
+        
+        <h3>Subscription</h3>
+        <!--created instead of order_number-->
+        <p>Order: <b>#{{stripe_data.metadata.order_number}}</b></p>
+        <p>Order Date: <b>{{format_date stripe_data.created "%B %d, %Y"}}<b></p>
+        <!--on this one its ITEMS instead of LINES? -->
+        <!-- {{#each stripe_data.items.data}}
+        <p>Subscription Plan: <b>{{plan.name}}</b>
+          <br>Quantity: <b>&times;{{quantity}}</b>
+          <br>Price: <b>{{format_currency plan.amount "usd" 2}} every {{plan.interval}}</b>
+        </p>
+        {{/each}} -->
+        <!--or like this?? -->
+        <p>Subscription Plan: <b>{{stripe_data.plan.name}}</b>
+          <br>Quantity: <b>&times;{{stripe_data.quantity}}</b>
+          <br>Price: <b>{{format_currency stripe_data.plan.amount "usd" 2}} every {{stripe_data.plan.interval}}</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
