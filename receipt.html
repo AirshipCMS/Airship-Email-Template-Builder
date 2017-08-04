@@ -22,26 +22,37 @@
         <h3>Order Info</h3>
         <p>Receipt #{{order_number}}</p>
         <p><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
+        
         <h3>Bill To</h3>
+
         <p>
-          {{billing_address.first_name}} {{billing_address.last_name}}
+          {{#if billing_address.first_name}}
+            {{billing_address.first_name}} {{billing_address.last_name}}
+          {{/if}}
           {{#if billing_address.address_1}}
             <br>{{billing_address.address_1}}
           {{/if}}
           {{#if billing_address.address_2}}
             <br>{{billing_address.address_2}}
           {{/if}}
-          <br>{{billing_address.city}}, 
-          {{#if billing_address.other_location}}
-            {{billing_address.other_location_text}}, 
-          {{else}}
-            {{billing_address.state}}, 
+          {{#if shipping_address.city}}
+            <br>{{billing_address.city}},
           {{/if}}
-          {{billing_address.country}}, {{billing_address.zipcode}}
+          {{#if shipping_address.state}}
+            {{#if billing_address.other_location}}
+              {{billing_address.other_location_text}}, 
+            {{else}}
+              {{billing_address.state}}, 
+            {{/if}}
+          {{/if}}
+          {{#if billing_address.country}}
+            {{billing_address.country}}, {{billing_address.zipcode}}
+          {{/if}}
           {{#if billing_address.phone_number}}
             <br>Phone: {{billing_address.phone_number}}
           {{/if}}
         </p>
+
         <h3>Ship Status</h3>
         <p class="shipping-type">
           <span class="shipping-type-text">{{shipping_type}} Shipping</span>
@@ -54,27 +65,39 @@
             {{/if_standard}}
           </span>
         </p>
-        <h3>Ship To</h3>
+        
+        {{#if shipping_address.address_1}}
+          <h3>Ship To</h3>
+        {{/if}}
+
         <p>
-          {{shipping_address.first_name}} {{shipping_address.last_name}}
+          {{#if shipping_address.first_name}}
+            {{shipping_address.first_name}} {{shipping_address.last_name}}
+          {{/if}}
           {{#if shipping_address.address_1}}
             <br>{{shipping_address.address_1}}
           {{/if}}
           {{#if shipping_address.address_2}}
             <br>{{shipping_address.address_2}}
           {{/if}}
-          <br>
-          {{shipping_address.city}}, 
-          {{#if shipping_address.other_location}}
-            {{shipping_address.other_location_text}}, 
-          {{else}}
-            {{shipping_address.state}}, 
+          {{#if shipping_address.city}}
+            <br>{{shipping_address.city}}, 
           {{/if}}
-          {{shipping_address.country}}, {{shipping_address.zipcode}}
+          {{#if shipping_address.state}}
+            {{#if shipping_address.other_location}}
+              {{shipping_address.other_location_text}}, 
+            {{else}}
+              {{shipping_address.state}}, 
+            {{/if}}
+          {{/if}}
+          {{#if shipping_address.country}}
+            {{shipping_address.country}}, {{shipping_address.zipcode}}
+          {{/if}}
           {{#if shipping_address.phone_number}}
             <br>Phone: {{shipping_address.phone_number}}
           {{/if}}
         </p>
+
       </div>
     </div>
 

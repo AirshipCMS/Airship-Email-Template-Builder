@@ -21,23 +21,37 @@
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; padding: 0; vertical-align: baseline;">Order Info</h3>
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">Invoice #{{order_number}}</p>
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;"><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
+        
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Bill To</h3>
+        
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">
-          {{billing_address.first_name}} {{billing_address.last_name}}
+          {{#if billing_address.first_name}}
+            {{billing_address.first_name}} {{billing_address.last_name}}
+          {{/if}}
+          {{#if billing_address.address_1}}
+            <br>{{billing_address.address_1}}
+          {{/if}}
           {{#if billing_address.address_2}}
             <br>{{billing_address.address_2}}
           {{/if}}
-          <br>{{billing_address.city}}, 
-          {{#if billing_address.other_location}}
-            {{billing_address.other_location_text}}, 
-          {{else}}
-            {{billing_address.state}}, 
+          {{#if shipping_address.city}}
+            <br>{{billing_address.city}},
           {{/if}}
-          {{billing_address.country}}, {{billing_address.zipcode}}
+          {{#if shipping_address.state}}
+            {{#if billing_address.other_location}}
+              {{billing_address.other_location_text}}, 
+            {{else}}
+              {{billing_address.state}}, 
+            {{/if}}
+          {{/if}}
+          {{#if billing_address.country}}
+            {{billing_address.country}}, {{billing_address.zipcode}}
+          {{/if}}
           {{#if billing_address.phone_number}}
             <br>Phone: {{billing_address.phone_number}}
           {{/if}}
         </p>
+
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship Status</h3>
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">
           <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; text-transform: capitalize; vertical-align: baseline;">{{shipping_type}} Shipping</span>
@@ -50,24 +64,39 @@
             {{/if_standard}}
           </span>
         </p>
-        <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship To</h3>
+
+        {{#if shipping_address.address_1}}
+          <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship To</h3>
+        {{/if}}
+
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">
-          {{shipping_address.first_name}} {{shipping_address.last_name}}
+          {{#if shipping_address.first_name}}
+            {{shipping_address.first_name}} {{shipping_address.last_name}}
+          {{/if}}
+          {{#if shipping_address.address_1}}
+            <br>{{shipping_address.address_1}}
+          {{/if}}
           {{#if shipping_address.address_2}}
             <br>{{shipping_address.address_2}}
           {{/if}}
-          <br>
-          {{shipping_address.city}}, 
-          {{#if shipping_address.other_location}}
-            {{shipping_address.other_location_text}}, 
-          {{else}}
-            {{shipping_address.state}}, 
+          {{#if shipping_address.city}}
+            <br>{{shipping_address.city}}, 
           {{/if}}
-          {{shipping_address.country}}, {{shipping_address.zipcode}}
+          {{#if shipping_address.state}}
+            {{#if shipping_address.other_location}}
+              {{shipping_address.other_location_text}}, 
+            {{else}}
+              {{shipping_address.state}}, 
+            {{/if}}
+          {{/if}}
+          {{#if shipping_address.country}}
+            {{shipping_address.country}}, {{shipping_address.zipcode}}
+          {{/if}}
           {{#if shipping_address.phone_number}}
             <br>Phone: {{shipping_address.phone_number}}
           {{/if}}
         </p>
+
       </div>
     </div>
 
