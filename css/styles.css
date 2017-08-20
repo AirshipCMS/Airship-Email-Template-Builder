@@ -289,6 +289,7 @@ p.large{
   background-color: #E5F2A7;
   border-radius: 2px;
   padding: 20px; 
+  font-weight: 300;
 }
 
 p.large.failed{
@@ -323,6 +324,10 @@ p a:hover{
   color: #485659;
 }
 
+.receipt-header{
+  padding: 25px;
+}
+
 .airship-logo img{
   max-width: 220px;
   display: block;
@@ -353,13 +358,98 @@ h3{
   color: #8A9A9E;
 }
 
+.orange{
+  /*color: #F7B731;*/
+  color: #ffa81c;
+}
+
+.teal{
+  color: #6ac3c1;
+}
+
+.green{
+  color: #a3bf1f;
+}
+
+.red{
+  color: #e65408;
+}
+
 .footer{
   color: #8A9A9E;
+}
+
+p{
+  font-size: 17px;
+  line-height: 25px;
+  font-weight: 300;
+  color: #67777B;
 }
 
 p.large{
   color: #67777B;
   background-color: #E4E9EB;
 }
+
+p.large.green{
+  color: #a3bf1f;
+  background-color: #ebf5bf;
+}
+
+p.large.red{
+  color: #e65408;
+  background-color: #ffe0db;
+}
+
+p.large.teal{
+  color: #6ac3c1;
+  background-color: #ddf9f5;
+  text-align: center;
+}
+
+p.large.orange{
+  color: #ffa81c;
+  background-color: #ffe9c6;
+  text-align: center;
+}
+
+a.button{
+  display: block;
+  background-color: #67777B;
+  color: #FFFFFF;
+  border-radius: 2px;
+  padding: 10px 25px;
+  font-weight: 300;
+  text-align: center;
+  margin: 15px auto 0;
+  max-width: 300px;
+}
+
+p.large.teal a.button{
+  background-color: #6ac3c1;
+}
+
+p.large.teal a.button:hover{
+  background-color: #6ac3c1;
+  color: #FFFFFF;
+}
+
+p.large.orange a.button{
+  background-color: #ffa81c;
+}
+
+p.large.orange a.button:hover{
+  background-color: #ffa81c;
+  color: #FFFFFF;
+}
+
+
+a.button img{
+  width: 15px;
+  height: 14px;
+  transform: translateY(1px);
+  margin-left: 2px;
+}
+
 
 /* ---------------End Airship Styles--------------- */

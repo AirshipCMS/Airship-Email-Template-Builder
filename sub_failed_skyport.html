@@ -14,25 +14,23 @@
           <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
           <p>Airship CMS</p>
         </div>
-        <h1 class="header-failed">Subscription Payment Failed</h1>
+        <h1 class="red">Subscription Payment Failed</h1>
       </div>
     </div>
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large failed">Subscription Payment of {{format_currency stripe_data.amount_due "usd" 2}} failed on {{format_date stripe_data.date}} from card ending *<span style="color:red;">MISSING</span>.</p>
+        <p class="large red">Subscription Payment of <b>{{stripe_data.amount_due}}</b> failed<span> on {{stripe_data.date}}</span>.</p>
 
         <h3>Fix Your Payment Method</h3>
-        <p>Login to the <a href="https://skyport.airshipcms.io" target="_blank">Airship Developer Portal</a> to add a new payment method for your subscription.</p>
+        <p>Login to the <a href="https://skyport.airshipcms-alpha.io" target="_blank">Airship Developer Portal</a> to add a new payment method for your subscription.</p>
         
         <h3>Subscription</h3>
-        <p>Order: <b>#{{order_data.order_number}}</b></p>
-        <p>Order Date: <b>{{format_date order_data.created_at "%B %d, %Y"}}<b></p>
+        <p>Order: <b>#{{order_data.subscription.order.order_number}}</b></p>
         {{#each stripe_data.lines.data}}
-        <p>Subscription Plan: <b>{{plan.name}}</b>
-          <br>Quantity: <b>&times;{{quantity}}</b>
-          <br>Price: <b>{{format_currency plan.amount "usd" 2}} every {{plan.interval}}</b>
+        <p>Subscription Plan: <b>{{plan.name}} - {{plan.amount}} every {{plan.interval}}</b>
         </p>
+        <p>Subscription ID: <b>{{stripe_data.subscription}}</b></p>
         {{/each}}
 
       </div>

@@ -13,19 +13,19 @@
       <div style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">
         <h1 style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 28px; font-weight: 300; letter-spacing: 0; line-height: 36px; margin: 0; margin-bottom: 20px; margin-top: 10px; padding: 0; text-align: center; vertical-align: baseline;"><!--configure-->CompanyName</h1>
         <!--optional: hardcoded absolute file path to logo <img> file here-->
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; text-align: center; vertical-align: baseline;">Receipt</p>
+        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; text-align: center; vertical-align: baseline;">Receipt</p>
       </div>
     </div>
 
-    <div style="border: 0; display: block; font: inherit; font-size: 100%; margin: 0; padding: 15px; vertical-align: baseline;">
+    <div style="border: 0; display: block; font: inherit; font-size: 100%; margin: 0; padding: 25px; vertical-align: baseline;">
       <div style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; padding: 0; vertical-align: baseline;">Order Info</h3>
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">Receipt #{{order_number}}</p>
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;"><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
+        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">Receipt #{{order_number}}</p>
+        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;"><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
         
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Bill To</h3>
 
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">
+        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">
           {{#if billing_address.first_name}}
             {{billing_address.first_name}} {{billing_address.last_name}}
           {{/if}}
@@ -54,7 +54,7 @@
         </p>
 
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship Status</h3>
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">
+        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">
           <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; text-transform: capitalize; vertical-align: baseline;">{{shipping_type}} Shipping</span>
           <br>
           <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;"> 
@@ -70,7 +70,7 @@
           <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship To</h3>
         {{/if}}
 
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">
+        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">
           {{#if shipping_address.first_name}}
             {{shipping_address.first_name}} {{shipping_address.last_name}}
           {{/if}}
@@ -155,10 +155,10 @@
 
     <div style="border: 0; font: inherit; font-size: 100%; margin: 0; margin-top: 15px; padding: 0 15px 5px; vertical-align: baseline;">
       <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; padding: 0; vertical-align: baseline;">Payment</h3>
-      <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">{{format_currency total "usd" 2}} <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; text-transform: uppercase; vertical-align: baseline;">{{currency}}</span> paid with Credit Card ending *{{card_last4}}.</p>
+      <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">{{format_currency total "usd" 2}} <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; text-transform: uppercase; vertical-align: baseline;">{{currency}}</span> paid with Credit Card ending *{{card_last4}}.</p>
       {{#if customer_notes}}
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Customer Notes</h3>
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; line-height: 20px; margin: 0; padding: 0; vertical-align: baseline;">{{customer_notes}}</p>
+        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">{{customer_notes}}</p>
       {{/if}}
     </div>
 
