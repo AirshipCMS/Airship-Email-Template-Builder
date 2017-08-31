@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Subscription Created</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/skyport.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -14,27 +14,36 @@
           <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
           <p>Airship CMS</p>
         </div>
-        <h1 class="orange">Subscription Started</h1>
+        <h1 class="">Subscription Started</h1>
       </div>
     </div>
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large orange">Your site &ldquo;{{stripe_data.metadata.name}}&rdquo; is almost ready! Login to the Airship Developer Portal to view your site status:
+        <p class="large grey">Login to check your site status:
 
         <a class="button" href="https://skyport.airshipcms-alpha.io/admin" target="_blank">Airship Developer Portal <img src="http://res.cloudinary.com/airship/image/upload/v1503024681/skyport-arrow-white_2x.png" alt="arrow"></a></p>
 
-        <h3 class="orange">Subscription</h3>
+        <p class="next-steps">
+          Check out the <a href="https://airshipcms.io/documentation/view/quickstart-guide">Quickstart Guide</a> for instructions on how to start developing a project with Airship. Also see the full <a href="https://airshipcms.io">Airship Docs</a> for information on templating, rendering, and launching your project.
+        </p>
+      </div>
+    </div>
+    <div class="header receipt-header">
+      <div class="header-inner">
+
+        <h3 class="">Subscription Details</h3>
         <p>Order: <b>#{{order_data.subscription.order.order_number}}</b></p>
         <p>Start Date: <b>{{order_data.subscription.order.order_date}}</b></p>
         <p>Subscription Plan: <b>{{stripe_data.plan.name}} - {{stripe_data.plan.amount}} every {{stripe_data.plan.interval}}</b>
         </p>
         <p>Subscription ID: <b>{{stripe_data.id}}</b></p>
 
-        <h3 class="orange">Site Details</h3>
+        <h3 class="">Site Details</h3>
         <p>Site Title: <b>{{stripe_data.metadata.name}}</b></p>
         <p>Subdomain: <b><a href="https://{{stripe_data.metadata.subdomain}}.airshipcms-alpha.io">{{stripe_data.metadata.subdomain}}.airshipcms-alpha.io</a></b></p>
         <p>Site Admin: <b><a href="https://{{stripe_data.metadata.subdomain}}.airshipcms-alpha.io/admin">{{stripe_data.metadata.subdomain}}.airshipcms-alpha.io/admin</a></b></p>
+
       </div>
     </div>
   </div>

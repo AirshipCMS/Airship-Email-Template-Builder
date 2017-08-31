@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Subscription Created</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Subscription Canceled</title>
+  <link rel="stylesheet" href="css/skyport.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -14,16 +14,18 @@
           <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
           <p>Airship CMS</p>
         </div>
-        <h1>Subscription Canceled</h1>
+        <h1 class="red">Subscription Canceled</h1>
       </div>
     </div>
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large">Your Subscription for the site &ldquo;{{stripe_data.metadata.name}}&rdquo; has been canceled. To see details about this site, login to the Airship Developer Portal:
+        <p class="large red">Your Subscription for the site &ldquo;{{stripe_data.metadata.name}}&rdquo; has been canceled.</p>
+      </div>
+    </div>
 
-        <a class="button" href="https://skyport.airshipcms-alpha.io/admin" target="_blank">Airship Developer Portal <img src="http://res.cloudinary.com/airship/image/upload/v1503024681/skyport-arrow-white_2x.png" alt="arrow"></a></p>
-
+    <div class="header receipt-header">
+      <div class="header-inner">
         <h3>Subscription</h3>
         <p>Order: <b>#{{order_data.subscription.order.order_number}}</b></p>
         <p>Subscription Plan: <b>{{stripe_data.plan.name}} - {{stripe_data.plan.amount}} every {{stripe_data.plan.interval}}</b>

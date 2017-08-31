@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Subscription Payment Received</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Payment Received</title>
+  <link rel="stylesheet" href="css/skyport.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -14,13 +14,13 @@
           <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
           <p>Airship CMS</p>
         </div>
-        <h1 class="green">Subscription Payment Received</h1>
+        <h1 class="green">Payment Received</h1>
       </div>
     </div>
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large green">Subscription Payment of <b>{{stripe_data.amount_due}}</b> received<span> on {{stripe_data.date}}</span>.</p>
+        <p class="large green">A Subscription Payment of <b>{{stripe_data.amount_due}}</b> was received<span> on {{stripe_data.date}}</span>.</p>
 
         <h3>Subscription</h3>
         <p>Order: <b>#{{order_data.subscription.order.order_number}}</b></p>

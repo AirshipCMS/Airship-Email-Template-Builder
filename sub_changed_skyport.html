@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Subscription Created</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/skyport.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -14,14 +14,18 @@
           <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
           <p>Airship CMS</p>
         </div>
-        <h1>Subscription Changed</h1>
+        <h1>Subscription Updated</h1>
       </div>
     </div>
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large">This subscription has changed...</p>
-
+        <p class="large">A payment has been made or the subscription status has changed.</p>
+      </div>
+    </div>
+    
+    <div class="header receipt-header">
+      <div class="header-inner">
         <h3>Subscription</h3>
         <p>Order: <b>#{{order_data.subscription.order.order_number}}</b></p>
         <p>Subscription Plan: <b>{{stripe_data.plan.name}} - {{stripe_data.plan.amount}} every {{stripe_data.plan.interval}}</b>

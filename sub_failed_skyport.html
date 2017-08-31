@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Subscription Payment Failed</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Payment Failed</title>
+  <link rel="stylesheet" href="css/skyport.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -14,13 +14,13 @@
           <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
           <p>Airship CMS</p>
         </div>
-        <h1 class="red">Subscription Payment Failed</h1>
+        <h1 class="red">Payment Failed</h1>
       </div>
     </div>
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large red">Subscription Payment of <b>{{stripe_data.amount_due}}</b> failed<span> on {{stripe_data.date}}</span>.</p>
+        <p class="large red">A Subscription Payment of <b>{{stripe_data.amount_due}}</b> failed<span> on {{stripe_data.date}}</span>.</p>
 
         <h3>Fix Your Payment Method</h3>
         <p>Login to the <a href="https://skyport.airshipcms-alpha.io" target="_blank">Airship Developer Portal</a> to add a new payment method for your subscription.</p>
