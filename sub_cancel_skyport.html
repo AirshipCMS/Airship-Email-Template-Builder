@@ -27,7 +27,7 @@
     <div class="header receipt-header">
       <div class="header-inner">
         <h3>Subscription</h3>
-        <p>Order: <b>#{{order_data.subscription.order.order_number}}</b></p>
+        <p>Order: <b>#{{order_data.order.order_number}}</b></p>
         <p>Subscription Plan: <b>{{stripe_data.plan.name}} - {{stripe_data.plan.amount}} every {{stripe_data.plan.interval}}</b>
         </p>
         <p>Subscription ID: <b>{{stripe_data.id}}</b></p>
