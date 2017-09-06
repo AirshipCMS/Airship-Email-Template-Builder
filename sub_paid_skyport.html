@@ -11,7 +11,7 @@
     <div class="header store-header">
       <div class="header-inner">
         <div class="airship-logo">
-          <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS"">
+          <img src="http://res.cloudinary.com/airship/image/upload/v1492151049/airshipcms-logo.png" alt="Airship CMS">
           <p>Airship CMS</p>
         </div>
         <h1 class="green">Payment Received</h1>
@@ -22,11 +22,16 @@
       <div class="header-inner">
         <p class="large green">A Subscription Payment of <b>{{stripe_data.amount_due}}</b> was received<span> on {{stripe_data.date}}</span>.</p>
 
-        <h3>Subscription</h3>
+        <h3>Subscription Details</h3>
         <p>Order: <b>#{{order_data.order.order_number}}</b></p>
         <p>Subscription Plan: <b>{{order_data.stripe_data.plan.name}} - {{order_data.stripe_data.plan.amount}} every  {{order_data.stripe_data.plan.interval}}</b>
         </p>
         <p>Subscription ID: <b>{{order_data.stripe_id}}</b></p>
+
+        <h3>Site Details</h3>
+        <p>Site Title: <b>{{order_data.order.meta_data.name}}</b></p>
+        <p>Site Subdomain: <b><a href="https://{{order_data.order.meta_data.subdomain}}.airshipcms-alpha.io">{{order_data.order.meta_data.subdomain}}.airshipcms-alpha.io</a></b></b></p>
+        <p>Site Admin: <b><a href="https://{{order_data.order.meta_data.subdomain}}.airshipcms-alpha.io/admin">{{order_data.order.meta_data.subdomain}}.airshipcms-alpha.io/admin</a></b></p>
       </div>
     </div>
   </div>
