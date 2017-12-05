@@ -119,7 +119,11 @@
               <td style="border: 0; box-sizing: border-box; color: #676767; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; height: 30px; line-height: 20px; margin: 0; padding: 0; padding-right: 15px; vertical-align: middle;">{{this.quantity}}</td>
               <td style="border: 0; color: #676767; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 13px; height: 30px; line-height: 20px; margin: 0; padding: 0; text-align: right; vertical-align: middle;">
                 {{#each product_variations}}
-                  {{format_currency this.price "usd" 2}}
+                  {{#if this.on_sale}}
+                    {{format_currency this.sale_price "usd" 2}}
+                  {{else}}
+                    {{format_currency this.price "usd" 2}}
+                  {{/if}}
                 {{/each}}
               </td>
             </tr>

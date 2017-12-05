@@ -118,7 +118,11 @@
               <td class="quantity">{{this.quantity}}</td>
               <td class="price">
                 {{#each product_variations}}
-                  {{format_currency this.price "usd" 2}}
+                  {{#if this.on_sale}}
+                    {{format_currency this.sale_price "usd" 2}}
+                  {{else}}
+                    {{format_currency this.price "usd" 2}}
+                  {{/if}}
                 {{/each}}
               </td>
             </tr>
