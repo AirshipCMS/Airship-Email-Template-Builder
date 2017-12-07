@@ -148,7 +148,7 @@ p + h3{
 /* TABLE */
 
 .cart-items{
-  padding: 10px 15px 0;
+  padding: 10px 25px 0;
 }
 
 .cart-items table{
@@ -254,7 +254,7 @@ td.price{
 
 .order-notes{
   margin-top: 15px;
-  padding: 0 15px 5px;
+  padding: 0 25px 5px;
 }
 
 .footer{

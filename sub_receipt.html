@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Active Subscription</title>
+  <title>Subscription Created</title>
   <link rel="stylesheet" href="css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -12,7 +12,7 @@
       <div class="header-inner">
         <h1><!--configure-->CompanyName</h1>
         <!--optional: hardcoded absolute file path to logo <img> file here-->
-        <p>Subscription Started</p>
+        <p>Subscription Receipt</p>
       </div>
     </div>
 
@@ -20,44 +20,12 @@
       <div class="header-inner">
         <h3>Subscription</h3>
         <p>Order: <b>#{{order_number}}</b></p>
-        <p>Order Date: <b>{{format_date order_date "%B %d, %Y"}}</b></p>
-        <p>Subscription Plan: <b>{{plan_name}}</b>
-          <br>Quantity: <b>&times;{{quantity}}</b>
-          <br>Price: <b><span style="color:red;">MISSING</span> every {{interval}}</b>
-        </p>
+        <p>Start Date: <b>{{format_date order_date "%B %d, %Y"}}</b></p>
+        <p>Subscription Plan: <b>{{plan.name}} - {{format_currency plan.amount "usd" 2}} {{currency}} every {{plan.interval_count}} {{plan.interval}}</b></p>
 
-        <h3>Bill To</h3>
-        <p>
-          {{#if billing_address.first_name}}
-            {{billing_address.first_name}} {{billing_address.last_name}}
-          {{else}}
-            No Billing information on file yet. Login at <a href="#" target="_blank">Portal Name</a> to add billing information before your trial ends on {{format_date trial_end "%B %d, %Y"}} in order to keep your subscription active.
-          {{/if}}
-          {{#if billing_address.address_1}}
-            <br>{{billing_address.address_1}}
-          
-            {{#if billing_address.address_2}}
-              <br>{{billing_address.address_2}}
-            {{/if}}
+        <h3>Billing</h3>
+        <p>You will receive a separate email when your card is charged for this subscription.</p>
 
-            <br>{{billing_address.city}}, 
-
-            {{#if billing_address.other_location}}
-              {{billing_address.other_location_text}}, 
-            {{else}}
-              {{billing_address.state}}, 
-            {{/if}}
-
-            {{billing_address.country}}, {{billing_address.zipcode}}
-
-          {{/if}}
-          {{#if billing_address.phone_number}}
-            <br>Phone: {{billing_address.phone_number}}
-          {{/if}}
-          {{#if billing_address.first_name}}
-            <br><br>You will receive a separate email when your card is charged for this subscription.
-          {{/if}}
-        </p>
         {{#if shipping_address.address_1}}
           <h3>Ship To</h3>
           <p>
@@ -83,6 +51,8 @@
     </div>
 
     <div class="order-notes">
+      <!-- <h3>Payment</h3>
+      <p>{{format_currency total "usd" 2}} <span class="currency">{{currency}}</span> paid with Credit Card ending *{{card_last4}}.</p> -->
       {{#if customer_notes}}
         <h3>Customer Notes</h3>
         <p>{{customer_notes}}</p>
