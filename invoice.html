@@ -22,35 +22,37 @@
         <p>Invoice #{{order_number}}</p>
         <p><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
         
-        <h3>Bill To</h3>
-        
-        <p>
-          {{#if billing_address.first_name}}
-            {{billing_address.first_name}} {{billing_address.last_name}}
-          {{/if}}
-          {{#if billing_address.address_1}}
-            <br>{{billing_address.address_1}}
-          {{/if}}
-          {{#if billing_address.address_2}}
-            <br>{{billing_address.address_2}}
-          {{/if}}
-          {{#if shipping_address.city}}
-            <br>{{billing_address.city}},
-          {{/if}}
-          {{#if shipping_address.state}}
-            {{#if billing_address.other_location}}
-              {{billing_address.other_location_text}}, 
-            {{else}}
-              {{billing_address.state}}, 
+        {{#if billing_address.first_name}}
+          <h3>Bill To</h3>
+          
+          <p>
+            {{#if billing_address.first_name}}
+              {{billing_address.first_name}} {{billing_address.last_name}}
             {{/if}}
-          {{/if}}
-          {{#if billing_address.country}}
-            {{billing_address.country}}, {{billing_address.zipcode}}
-          {{/if}}
-          {{#if billing_address.phone_number}}
-            <br>Phone: {{billing_address.phone_number}}
-          {{/if}}
-        </p>
+            {{#if billing_address.address_1}}
+              <br>{{billing_address.address_1}}
+            {{/if}}
+            {{#if billing_address.address_2}}
+              <br>{{billing_address.address_2}}
+            {{/if}}
+            {{#if shipping_address.city}}
+              <br>{{billing_address.city}},
+            {{/if}}
+            {{#if shipping_address.state}}
+              {{#if billing_address.other_location}}
+                {{billing_address.other_location_text}}, 
+              {{else}}
+                {{billing_address.state}}, 
+              {{/if}}
+            {{/if}}
+            {{#if billing_address.country}}
+              {{billing_address.country}}, {{billing_address.zipcode}}
+            {{/if}}
+            {{#if billing_address.phone_number}}
+              <br>Phone: {{billing_address.phone_number}}
+            {{/if}}
+          </p>
+        {{/if}}
 
         <h3>Ship Status</h3>
         <p class="shipping-type">
