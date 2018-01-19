@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscription Created</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="receipt">
+    <div class="header store-header">
+      <div class="header-inner">
+        <h1><!--configure-->CompanyName</h1>
+        <!--optional: hardcoded absolute file path to logo <img> file here-->
+        <p>Subscription Created!</p>
+      </div>
+    </div>
+
+    <div class="header receipt-header">
+      <div class="header-inner">
+        <p class="large">Your Subscription is now active! Put a nice welcome message here.</p>
+
+        <h3>Subscription Details</h3>
+        <p>Order: <b>#{{order_data.order.order_number}}</b></p>
+        <p>Start Date: <!--configure timezone--><b>{{format_date order_data.created_at "%B %d, %Y"}}</b></p>
+        <p>Subscription Plan: <b>{{stripe_data.plan.name}} - {{format_currency stripe_data.plan.amount "usd" 2}} {{currency}} every {{stripe_data.plan.interval_count}} {{stripe_data.plan.interval}}</b></p>
+        <p>Subscription ID: <b>{{stripe_data.id}}</b></p>
+        
+        <!-- not sure if this displays -->
+        {{#if order_data.order.shipping_address.first_name}}
+          <h3>Ship To</h3>
+          <p>
+            {{#if order_data.order.shipping_address.first_name}}
+              {{order_data.order.shipping_address.first_name}} {{order_data.order.shipping_address.last_name}}
+            {{/if}}
+            {{#if order_data.order.shipping_address.address_1}}
+              <br>{{order_data.order.shipping_address.address_1}}
+            {{/if}}
+            {{#if order_data.order.shipping_address.address_2}}
+              <br>{{order_data.order.shipping_address.address_2}}
+            {{/if}}
+            {{#if order_data.order.shipping_address.city}}
+              <br>{{order_data.order.shipping_address.city}},
+            {{/if}}
+            {{#if order_data.order.shipping_address.state}}
+              {{#if order_data.order.shipping_address.other_location}}
+                {{order_data.order.shipping_address.other_location_text}}, 
+              {{else}}
+                {{order_data.order.shipping_address.state}}, 
+              {{/if}}
+            {{/if}}
+            {{#if order_data.order.shipping_address.country}}
+              {{order_data.order.shipping_address.country}}, {{order_data.order.shipping_address.zipcode}}
+            {{/if}}
+            {{#if order_data.order.shipping_address.phone_number}}
+              <br>Phone: {{order_data.order.shipping_address.phone_number}}
+            {{/if}}
+          </p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

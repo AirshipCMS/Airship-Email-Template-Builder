@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Subscription Created</title>
+  <title>Subscription Receipt</title>
   <link rel="stylesheet" href="css/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -18,19 +18,48 @@
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <h3>Subscription</h3>
-        <p>Order: <b>#{{order_number}}</b></p>
-        <p>Start Date: <b>{{format_date order_date "%B %d, %Y"}}</b></p>
-        <p>Subscription Plan: <b>{{plan.name}} - {{format_currency plan.amount "usd" 2}} {{currency}} every {{plan.interval_count}} {{plan.interval}}</b></p>
-
-        <h3>Billing</h3>
-        <p>You will receive a separate email when your card is charged for this subscription.</p>
+        <h3>Order Info</h3>
+        <p>Receipt #{{order_number}}</p>
+        <p><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
+        
+        {{#if billing_address.address_1}}
+          <h3>Bill To</h3>
+          <p>
+            {{#if billing_address.first_name}}
+              {{billing_address.first_name}} {{billing_address.last_name}}
+            {{/if}}
+            {{#if billing_address.address_1}}
+              <br>{{billing_address.address_1}}
+            {{/if}}
+            {{#if billing_address.address_2}}
+              <br>{{billing_address.address_2}}
+            {{/if}}
+            {{#if shipping_address.city}}
+              <br>{{billing_address.city}},
+            {{/if}}
+            {{#if shipping_address.state}}
+              {{#if billing_address.other_location}}
+                {{billing_address.other_location_text}}, 
+              {{else}}
+                {{billing_address.state}}, 
+              {{/if}}
+            {{/if}}
+            {{#if billing_address.country}}
+              {{billing_address.country}}, {{billing_address.zipcode}}
+            {{/if}}
+            {{#if billing_address.phone_number}}
+              <br>Phone: {{billing_address.phone_number}}
+            {{/if}}
+          </p>
+        {{/if}}
 
         {{#if shipping_address.address_1}}
           <h3>Ship To</h3>
           <p>
             {{shipping_address.first_name}} {{shipping_address.last_name}}
-            <br>{{shipping_address.address_1}}
+            {{#if shipping_address.address_1}}
+              <br>{{shipping_address.address_1}}
+            {{/if}}
             {{#if shipping_address.address_2}}
               <br>{{shipping_address.address_2}}
             {{/if}}
@@ -47,16 +76,69 @@
             {{/if}}
           </p>
         {{/if}}
+
+        {{#if shipping_type}}
+          <h3>Shipping Type</h3>
+          <p class="shipping-type">
+            <span class="shipping-type-text">{{shipping_type}} Shipping</span>
+            <br>
+            You will receive an email when your order has shipped.
+          </p>
+        {{/if}}
+
       </div>
     </div>
 
+    <div class="cart-items">
+      <table>
+        <tr class="cart-item cart-item-headers">
+          <th class="cart-item-title">Item</th>
+          <th class="quantity">Quantity</th>
+          <th class="price">Price</th>
+        </tr>
+        <tbody>
+          <tr class="cart-item cart-item-variation">
+            <td class="cart-item-title">{{plan.name}}</td>
+            <td class="quantity">1</td><!-- this is hardcoded -->
+            <td class="price">{{format_currency plan.amount "usd" 2}}</td>
+          </tr>
+          <tr class="cart-item cart-item-summary cart-item-subtotal">
+            <td class="cart-item-summary">Total</td>
+            <td class="cart-item-spacer"></td>
+            <td class="price">{{format_currency plan.amount "usd" 2}} {{currency}} every {{plan.interval_count}} {{plan.interval}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="order-notes">
-      <!-- <h3>Payment</h3>
-      <p>{{format_currency total "usd" 2}} <span class="currency">{{currency}}</span> paid with Credit Card ending *{{card_last4}}.</p> -->
+      <!-- does this show anything for subs? -->
+      <h3>Payment</h3>
+      <p>You will receive a separate email confirming your payment for this subscription.</p>
       {{#if customer_notes}}
         <h3>Customer Notes</h3>
         <p>{{customer_notes}}</p>
       {{/if}}
+    </div>
+
+    <!-- misc data rendering is a bit limited. keys are hardcoded (not sure how to display the actual key name) -->
+    <div class="order-notes">
+      <h3>Miscellanous Data</h3>
+      <ul>
+        {{#each misc_data}}
+          <li>
+            <div class="product_data" style="border:1px solid #CCC;margin-bottom: 10px;padding:10px;">
+              Item {{@key}} Product Data:
+              <ul>
+              {{#if chopped}}<li>chopped: {{chopped}}</li>{{/if}}
+              {{#if plan}}<li>plan: {{plan}}</li>{{/if}}
+              {{#if plan_id}}<li>plan_id: {{plan_id}}</li>{{/if}}
+              {{#if product_title}}<li>product_title: {{product_title}}</li>{{/if}}
+              <ul>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
     </div>
 
     <div class="footer">

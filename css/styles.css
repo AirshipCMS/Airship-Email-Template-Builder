@@ -126,7 +126,7 @@ p{
 }
 
 p span.shipping-type-text{
-  text-transform: capitalize;
+  /*text-transform: capitalize;*/
 }
 
 p + h3{

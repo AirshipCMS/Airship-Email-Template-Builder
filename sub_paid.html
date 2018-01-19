@@ -18,17 +18,13 @@
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large">Subscription Payment of {{format_currency stripe_data.amount_due "usd" 2}} received on {{format_date stripe_data.date}} from card ending *<span style="color:red;">MISSING</span>.</p>
+        <p class="large">Subscription Payment of <b>{{format_currency stripe_data.amount_due "usd" 2}}</b> received on {{format_date stripe_data.date}}.</p>
 
-        <h3>Subscription</h3>
-        <p>Order: <b>#{{order_data.order_number}}</b></p>
-        <p>Order Date: <b>{{format_date order_data.created_at "%B %d, %Y"}}<b></p>
-        {{#each stripe_data.lines.data}}
-        <p>Subscription Plan: <b>{{plan.name}}</b>
-          <br>Quantity: <b>&times;{{quantity}}</b>
-          <br>Price: <b>{{format_currency plan.amount "usd" 2}} every {{plan.interval}}</b>
+        <h3>Subscription Details</h3>
+        <p>Order: <b>#{{order_data.order.order_number}}</b></p>
+        <p>Subscription Plan: <b>{{order_data.stripe_data.plan.name}} - {{order_data.stripe_data.plan.amount}} every {{order_data.stripe_data.plan.interval_count}} {{order_data.stripe_data.plan.interval}}</b>
         </p>
-        {{/each}}
+        <p>Subscription ID: <b>{{order_data.stripe_id}}</b></p>
       </div>
     </div>
   </div>

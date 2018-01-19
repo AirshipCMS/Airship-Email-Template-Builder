@@ -24,7 +24,6 @@
         <p><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
         {{#if billing_address.first_name}}
           <h3>Bill To</h3>
-
           <p>
             {{#if billing_address.first_name}}
               {{billing_address.first_name}} {{billing_address.last_name}}
@@ -53,50 +52,51 @@
             {{/if}}
           </p>
         {{/if}}
-
-        <h3>Ship Status</h3>
+        
+        {{#if shipping_address.address_1}}
+          <h3>Ship To</h3>
+          <p>
+            {{#if shipping_address.first_name}}
+              {{shipping_address.first_name}} {{shipping_address.last_name}}
+            {{/if}}
+            {{#if shipping_address.address_1}}
+              <br>{{shipping_address.address_1}}
+            {{/if}}
+            {{#if shipping_address.address_2}}
+              <br>{{shipping_address.address_2}}
+            {{/if}}
+            {{#if shipping_address.city}}
+              <br>{{shipping_address.city}}, 
+            {{/if}}
+            {{#if shipping_address.state}}
+              {{#if shipping_address.other_location}}
+                {{shipping_address.other_location_text}}, 
+              {{else}}
+                {{shipping_address.state}}, 
+              {{/if}}
+            {{/if}}
+            {{#if shipping_address.country}}
+              {{shipping_address.country}}, {{shipping_address.zipcode}}
+            {{/if}}
+            {{#if shipping_address.phone_number}}
+              <br>Phone: {{shipping_address.phone_number}}
+            {{/if}}
+          </p>
+        {{/if}}
+        
+        <!-- where is this "if_standard" helper coming from? -->
+        <h3>Shipping Type</h3>
         <p class="shipping-type">
           <span class="shipping-type-text">{{shipping_type}} Shipping</span>
           <br>
-          <span> 
+          You will receive an email when your order has shipped.
+          <!--<span> 
             {{#if_standard shipping_type}}
               You will receive an email when your order has shipped.
             {{else}}
               We will process your order as soon as possible. You will receive an email as soon as your order has shipped.
             {{/if_standard}}
-          </span>
-        </p>
-        
-        {{#if shipping_address.address_1}}
-          <h3>Ship To</h3>
-        {{/if}}
-
-        <p>
-          {{#if shipping_address.first_name}}
-            {{shipping_address.first_name}} {{shipping_address.last_name}}
-          {{/if}}
-          {{#if shipping_address.address_1}}
-            <br>{{shipping_address.address_1}}
-          {{/if}}
-          {{#if shipping_address.address_2}}
-            <br>{{shipping_address.address_2}}
-          {{/if}}
-          {{#if shipping_address.city}}
-            <br>{{shipping_address.city}}, 
-          {{/if}}
-          {{#if shipping_address.state}}
-            {{#if shipping_address.other_location}}
-              {{shipping_address.other_location_text}}, 
-            {{else}}
-              {{shipping_address.state}}, 
-            {{/if}}
-          {{/if}}
-          {{#if shipping_address.country}}
-            {{shipping_address.country}}, {{shipping_address.zipcode}}
-          {{/if}}
-          {{#if shipping_address.phone_number}}
-            <br>Phone: {{shipping_address.phone_number}}
-          {{/if}}
+          </span>-->
         </p>
 
       </div>
@@ -165,6 +165,27 @@
         <h3>Customer Notes</h3>
         <p>{{customer_notes}}</p>
       {{/if}}
+    </div>
+    
+    <!-- misc data rendering is a bit limited. keys are hardcoded (not sure how to display the actual key name) -->
+    <div class="order-notes">
+      <h3>Miscellanous Data</h3>
+      <ul>
+        {{#each misc_data}}
+          <li>
+            <div class="product_data" style="border:1px solid #CCC;margin-bottom: 10px;padding:10px;">
+              Item {{@key}} Product Data:
+              <ul>
+              {{#if chopped}}<li>chopped: {{chopped}}</li>{{/if}}
+              {{#if product_variation}}<li>product_variation: {{product_variation}}</li>{{/if}}
+              {{#if product_variation_id}}<li>product_variation_id: {{product_variation_id}}</li>{{/if}}
+              {{#if product_title}}<li>product_title: {{product_title}}</li>{{/if}}
+              {{#if quantity}}<li>quantity: {{quantity}}</li>{{/if}}
+              <ul>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
     </div>
 
     <div class="footer">

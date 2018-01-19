@@ -18,14 +18,13 @@
 
     <div class="header receipt-header">
       <div class="header-inner">
+        <p class="shipped">Your Order was Shipped on 
+          <span><!--configure timezone-->{{format_date ship_date "%B %d, %Y"}}</span>! 
+          Please use the tracking number at the {{shipping_provider}} website to track your order.</p>
+          
         <h3>Order Info</h3>
         <p>Receipt #{{order_number}}</p>
         <p><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
-        
-        {{#if customer_notes}}
-          <h3>Customer Notes</h3>
-          <p>{{customer_notes}}</p>
-        {{/if}}
         
         <h3>Ship To</h3>
         
@@ -57,11 +56,6 @@
           {{/if}}
         </p>
         
-        <h3>Shipment Status</h3>
-        <p class="shipped">Your Order was Shipped on 
-          <span><!--configure timezone-->{{format_date ship_date "%B %d, %Y"}}</span>! 
-          Please use the tracking number at the {{shipping_provider}} website to track your order.</p>
-        
         <h3>Shipping Type</h3>
         <p class="shipping-provider"><span class="shipping-type-text">{{shipping_type}} Shipping</span>
         {{#if shipping_provider}}
@@ -73,6 +67,11 @@
         </p>
         {{#if shipment_notes}}
           <p class="shipping-notes">{{shipment_notes}}</p>
+        {{/if}}
+
+        {{#if customer_notes}}
+          <h3>Customer Notes</h3>
+          <p>{{customer_notes}}</p>
         {{/if}}
       </div>
     </div>

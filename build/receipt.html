@@ -24,7 +24,6 @@
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;"><!--configure timezone-->{{format_date order_date "%B %d, %Y"}}</p>
         {{#if billing_address.first_name}}
           <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Bill To</h3>
-
           <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">
             {{#if billing_address.first_name}}
               {{billing_address.first_name}} {{billing_address.last_name}}
@@ -53,50 +52,51 @@
             {{/if}}
           </p>
         {{/if}}
-
-        <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship Status</h3>
+        
+        {{#if shipping_address.address_1}}
+          <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship To</h3>
+          <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">
+            {{#if shipping_address.first_name}}
+              {{shipping_address.first_name}} {{shipping_address.last_name}}
+            {{/if}}
+            {{#if shipping_address.address_1}}
+              <br>{{shipping_address.address_1}}
+            {{/if}}
+            {{#if shipping_address.address_2}}
+              <br>{{shipping_address.address_2}}
+            {{/if}}
+            {{#if shipping_address.city}}
+              <br>{{shipping_address.city}}, 
+            {{/if}}
+            {{#if shipping_address.state}}
+              {{#if shipping_address.other_location}}
+                {{shipping_address.other_location_text}}, 
+              {{else}}
+                {{shipping_address.state}}, 
+              {{/if}}
+            {{/if}}
+            {{#if shipping_address.country}}
+              {{shipping_address.country}}, {{shipping_address.zipcode}}
+            {{/if}}
+            {{#if shipping_address.phone_number}}
+              <br>Phone: {{shipping_address.phone_number}}
+            {{/if}}
+          </p>
+        {{/if}}
+        
+        <!-- where is this "if_standard" helper coming from? -->
+        <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Shipping Type</h3>
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">
-          <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; text-transform: capitalize; vertical-align: baseline;">{{shipping_type}} Shipping</span>
+          <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">{{shipping_type}} Shipping</span>
           <br>
-          <span style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;"> 
+          You will receive an email when your order has shipped.
+          <!--<span> 
             {{#if_standard shipping_type}}
               You will receive an email when your order has shipped.
             {{else}}
               We will process your order as soon as possible. You will receive an email as soon as your order has shipped.
             {{/if_standard}}
-          </span>
-        </p>
-        
-        {{#if shipping_address.address_1}}
-          <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Ship To</h3>
-        {{/if}}
-
-        <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">
-          {{#if shipping_address.first_name}}
-            {{shipping_address.first_name}} {{shipping_address.last_name}}
-          {{/if}}
-          {{#if shipping_address.address_1}}
-            <br>{{shipping_address.address_1}}
-          {{/if}}
-          {{#if shipping_address.address_2}}
-            <br>{{shipping_address.address_2}}
-          {{/if}}
-          {{#if shipping_address.city}}
-            <br>{{shipping_address.city}}, 
-          {{/if}}
-          {{#if shipping_address.state}}
-            {{#if shipping_address.other_location}}
-              {{shipping_address.other_location_text}}, 
-            {{else}}
-              {{shipping_address.state}}, 
-            {{/if}}
-          {{/if}}
-          {{#if shipping_address.country}}
-            {{shipping_address.country}}, {{shipping_address.zipcode}}
-          {{/if}}
-          {{#if shipping_address.phone_number}}
-            <br>Phone: {{shipping_address.phone_number}}
-          {{/if}}
+          </span>-->
         </p>
 
       </div>
@@ -165,6 +165,27 @@
         <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; margin-top: 15px; padding: 0; vertical-align: baseline;">Customer Notes</h3>
         <p style="border: 0; color: #67777B; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 17px; font-weight: 300; line-height: 25px; margin: 0; padding: 0; vertical-align: baseline;">{{customer_notes}}</p>
       {{/if}}
+    </div>
+    
+    <!-- misc data rendering is a bit limited. keys are hardcoded (not sure how to display the actual key name) -->
+    <div style="border: 0; font: inherit; font-size: 100%; margin: 0; margin-top: 15px; padding: 0 25px 5px; vertical-align: baseline;">
+      <h3 style="border: 0; color: #8A9A9E; font: inherit; font-family: 'Open Sans', 'Helvetica', sans-serif; font-size: 12px; margin: 0; margin-bottom: 5px; padding: 0; vertical-align: baseline;">Miscellanous Data</h3>
+      <ul style="border: 0; font: inherit; font-size: 100%; list-style: none; margin: 0; padding: 0; vertical-align: baseline;">
+        {{#each misc_data}}
+          <li style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">
+            <div style="border: 1px solid #CCC; font: inherit; font-size: 100%; margin: 0; margin-bottom: 10px; padding: 10px; vertical-align: baseline;">
+              Item {{@key}} Product Data:
+              <ul style="border: 0; font: inherit; font-size: 100%; list-style: none; margin: 0; padding: 0; vertical-align: baseline;">
+              {{#if chopped}}<li style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">chopped: {{chopped}}</li>{{/if}}
+              {{#if product_variation}}<li style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">product_variation: {{product_variation}}</li>{{/if}}
+              {{#if product_variation_id}}<li style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">product_variation_id: {{product_variation_id}}</li>{{/if}}
+              {{#if product_title}}<li style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">product_title: {{product_title}}</li>{{/if}}
+              {{#if quantity}}<li style="border: 0; font: inherit; font-size: 100%; margin: 0; padding: 0; vertical-align: baseline;">quantity: {{quantity}}</li>{{/if}}
+              <ul style="border: 0; font: inherit; font-size: 100%; list-style: none; margin: 0; padding: 0; vertical-align: baseline;">
+            </ul></ul></div>
+          </li>
+        {{/each}}
+      </ul>
     </div>
 
     <div style="border: 0; border-top: 1px solid #CCC; color: #8A9A9E; font: inherit; font-size: 100%; margin: 0; margin-top: 15px; padding: 20px 15px; vertical-align: baseline;">

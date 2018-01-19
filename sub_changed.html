@@ -18,18 +18,13 @@
 
     <div class="header receipt-header">
       <div class="header-inner">
-        <p class="large">Your Subscription has been updated.</p>
+        <p class="large">Your Subscription plan has changed to "{{stripe_data.plan.name}}."</p>
         
-        <h3>Subscription</h3>
-        <p>Order: <b>#{{stripe_data.metadata.order_number}}</b></p>
-        <p>Order Date: <b>{{format_date stripe_data.created "%B %d, %Y"}}<b></p>
-        <!--on this one its ITEMS instead of LINES? -->
-        {{#each stripe_data.items.data}}
-        <p>Subscription Plan: <b>{{plan.name}}</b>
-          <br>Quantity: <b>&times;{{quantity}}</b>
-          <br>Price: <b>{{format_currency plan.amount "usd" 2}} every {{plan.interval}}</b>
+        <h3>Subscription Details</h3>
+        <p>Order: <b>#{{order_data.order.order_number}}</b></p>
+        <p>Subscription Plan: <b>{{stripe_data.plan.name}} - {{stripe_data.plan.amount}} every {{stripe_data.plan.interval_count}} {{stripe_data.plan.interval}}</b>
         </p>
-        {{/each}}
+        <p>Subscription ID: <b>{{stripe_data.id}}</b></p>
 
       </div>
     </div>
